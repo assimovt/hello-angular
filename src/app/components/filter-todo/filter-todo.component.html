@@ -1,0 +1,17 @@
+<div>
+  <label>What to do?</label>
+  <input placeholder="Add new todo" type="text" #todoName>
+  <button (click)="addTodo(todoName.value); todoName.value=''">Add</button>
+</div>
+
+<div>
+  <label>Filter todos:</label>
+  <input placeholder="Type to filter" type="text" [(ngModel)]="pattern">
+</div>
+
+<br>
+<ul>
+  <li *ngFor="let todo of todos | filter:'name':pattern ; let i = index">
+    {{ i + 1 }}: {{ todo.name | capitalize }}
+  </li>
+</ul>
